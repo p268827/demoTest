@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>萬聖節心理測驗 - 第二關</title>
+</head>
+<body>
+    <h1>第二關: 在Cog&J酒吧</h1>
+    <p>問題1: 你在酒吧里看到了一群人穿着各種嚇人的萬聖節服裝，你會：</p>
+    <label><input type="radio" name="q1" value="3">積極加入他們</label><br>
+    <label><input type="radio" name="q1" value="2">觀望一會</label><br>
+    <label><input type="radio" name="q1" value="1">走開，覺得太嚇人</label><br>
+    <button onclick="nextPage(getSelectedValue('q1'))">下一題</button>
+
+    <script>
+        function getSelectedValue(question) {
+            const options = document.getElementsByName(question);
+            for (const option of options) {
+                if (option.checked) {
+                    return parseInt(option.value);
+                }
+            }
+            return 0; // 默认值
+        }
+        function nextPage(score) {
+            localStorage.setItem('score2', score);
+            window.location.href = 'page3.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>萬聖節心理測驗 - 結果</title>
+</head>
+<body>
+    <h1>測驗結果</h1>
+    <p>計算中...</p>
+
+    <script>
+        window.addEventListener('load', calculateResult);
+
+        function calculateResult() {
+            let totalScore = 0;
+
+            for (let i = 1; i <= 5; i++) {
+                const score = localStorage.getItem('score' + i);
+                if (score) {
+                    totalScore += parseInt(score);
+                }
+            }
+
+            let result = '';
+
+            if (totalScore === 5) {
+                result = 'Anna';
+            } else if (totalScore === 15) {
+                result = 'Jack';
+            } else {
+                const results = ['Anna', '奔奔', 'Waiting', 'Yoga', 'Jack'];
+                result = results[Math.floor(Math.random() * results.length)];
+            }
+
+            document.querySelector('p').textContent = '恭喜！你要跟' + result + '喝shot!';
+        }
+    </script>
+</body>
+</html>
